@@ -37,9 +37,18 @@ android {
 
 dependencies {
 
+    val appCompat = "1.6.1"
+    val latestAndroidIconicsRelease = "5.4.0"
+
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.appcompat:appcompat:${appCompat}")
     implementation("com.google.android.material:material:1.8.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("com.mikepenz:iconics-core:${latestAndroidIconicsRelease}")
+    implementation("com.mikepenz:iconics-views:${latestAndroidIconicsRelease}")
+    implementation("com.mikepenz:google-material-typeface:4.0.0.2-kotlin@aar")
+    implementation("com.mikepenz:meteocons-typeface:+@aar")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

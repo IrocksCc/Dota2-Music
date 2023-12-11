@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Dota2-Music"
 include(":app")
- 
+include(":player")

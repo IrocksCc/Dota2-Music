@@ -44,7 +44,7 @@ class MusicDTO<B : BaseAlbumItem<M, A>?, M : BaseMusicItem<A>?, A : BaseArtistIt
         albumId = musicAlbum?.albumId
         musicId = music?.musicId
         img = music?.coverImg
-        artist = music?.artist as A
+        artist = music?.artist
     }
 
     fun setArtist(artist: A) {

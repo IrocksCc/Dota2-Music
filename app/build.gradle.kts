@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.dota2.music"
-        minSdk = 33
+        minSdk = 31
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -33,12 +33,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    dataBinding.enable = true
 }
 
 dependencies {
 
     val appCompat = "1.6.1"
     val latestAndroidIconicsRelease = "5.4.0"
+    val superTextViewVersionCode = "2.4.6"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:${appCompat}")
@@ -46,8 +49,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.mikepenz:iconics-core:${latestAndroidIconicsRelease}")
     implementation("com.mikepenz:iconics-views:${latestAndroidIconicsRelease}")
-    implementation("com.mikepenz:google-material-typeface:4.0.0.2-kotlin@aar")
-    implementation("com.mikepenz:meteocons-typeface:+@aar")
+
+    implementation("com.github.lygttpod:SuperTextView:${superTextViewVersionCode}")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

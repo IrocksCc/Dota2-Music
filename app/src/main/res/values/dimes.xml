@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_title_text_size">24sp</dimen>
+    <dimen name="splash_title_margin_bottom">98dp</dimen>
+    <dimen name="splash_summary_text_size">12sp</dimen>
+    <dimen name="splash_summary_margin_start">5dp</dimen>
+    <dimen name="splash_summary_margin_end">5dp</dimen>
+    <dimen name="splash_summary_layout_width">30dp</dimen>
+    <dimen name="splash_divide_width">40dp</dimen>
+    <dimen name="splash_divide_height">1dp</dimen>
+    <dimen name="splash_icon_width">120dp</dimen>
+    <dimen name="splash_icon_height">120dp</dimen>
+    <dimen name="splash_icon_margin_top">130dp</dimen>
+    <dimen name="sliding_up_header">55dp</dimen>
+</resources>

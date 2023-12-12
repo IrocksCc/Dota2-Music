@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -51,6 +52,33 @@ dependencies {
     implementation("com.mikepenz:iconics-views:${latestAndroidIconicsRelease}")
 
     implementation("com.github.lygttpod:SuperTextView:${superTextViewVersionCode}")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+    implementation("io.reactivex.rxjava3:rxjava:3.1.5")
+    val lifecycle_version = "2.5.1"
+    val nav_version = "2.5.3"
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // ViewModel utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    // Annotation processor
+    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+    // optional - helpers for implementing LifecycleOwner in a Service
+    implementation("androidx.lifecycle:lifecycle-service:$lifecycle_version")
+    // SlidingUpPanelLayout
+    implementation("com.sothree.slidinguppanel:library:3.4.0")
+    // navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.11.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
+    // Gson
+    implementation("com.google.code.gson:gson:2.8.6")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

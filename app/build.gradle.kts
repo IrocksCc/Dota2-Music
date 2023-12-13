@@ -50,6 +50,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.mikepenz:iconics-core:${latestAndroidIconicsRelease}")
     implementation("com.mikepenz:iconics-views:${latestAndroidIconicsRelease}")
+    implementation("com.mikepenz:fontawesome-typeface:5.9.0.2-kotlin@aar")
 
     implementation("com.github.lygttpod:SuperTextView:${superTextViewVersionCode}")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
@@ -80,6 +81,7 @@ dependencies {
     // Gson
     implementation("com.google.code.gson:gson:2.8.6")
     implementation(project(":tools"))
+    implementation("com.github.bingoogolapple:BGABanner-Android:3.0.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

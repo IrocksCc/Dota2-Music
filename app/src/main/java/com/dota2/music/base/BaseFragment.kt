@@ -1,8 +1,9 @@
-package com.dota2.music.tools.ui
+package com.dota2.music.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import com.dota2.music.tools.ui.ViewModelScope
 
 class BaseFragment: Fragment() {
 

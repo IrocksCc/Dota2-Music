@@ -4,4 +4,5 @@
     <string name="splash_summary">收录Dota2最全的音乐</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_place_holder">请输入搜索内容</string>
 </resources>

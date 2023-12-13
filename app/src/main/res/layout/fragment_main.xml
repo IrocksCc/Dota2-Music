@@ -21,12 +21,13 @@
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 app:contentScrim="@android:color/transparent"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_search"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -37,11 +38,11 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_marginStart="10dp"
-                        android:src="@drawable/menu"
                         android:scaleType="centerInside"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:src="@drawable/menu"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -49,52 +50,79 @@
                         android:layout_marginStart="60dp"
                         android:layout_marginEnd="60dp"
                         android:background="@drawable/radius_16_theme_2"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/image_search"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_marginStart="10dp"
-                            android:src="@drawable/search"
                             android:scaleType="centerInside"
-                            app:layout_constraintTop_toTopOf="parent"
+                            android:src="@drawable/search"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/app_name_home"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/search_place_holder"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <cn.bingoogolapple.bgabanner.BGABanner
-                    android:id="@+id/banner"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="60dp"
-                    app:banner_indicatorGravity="left"
-                    app:banner_pageChangeDuration="1000"
-                    app:banner_pointAutoPlayAble="true"
-                    app:banner_pointAutoPlayInterval="3000"
-                    app:banner_pointContainerBackground="@android:color/transparent"
-                    app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
-                    app:banner_pointTopBottomMargin="40dp"
-                    app:layout_scrollFlags="scroll" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp">
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/suggest_songs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="推荐歌曲"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/banner" />
+
+                    <cn.bingoogolapple.bgabanner.BGABanner
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        app:banner_indicatorGravity="left"
+                        app:banner_pageChangeDuration="1000"
+                        app:banner_pointAutoPlayAble="true"
+                        app:banner_pointAutoPlayInterval="3000"
+                        app:banner_pointContainerBackground="@android:color/transparent"
+                        app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+                        app:banner_pointTopBottomMargin="40dp"
+                        app:layout_scrollFlags="scroll"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/main_recy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:clipToPadding="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/suggest_songs"
+                        tools:listitem="@layout/suggest_songs_item"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
         </com.google.android.material.appbar.AppBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
@@ -7,15 +7,15 @@ android {
     namespace = "com.dota2.myapplication"
     compileSdk = 33
 
-    defaultConfig {
-        applicationId = "com.dota2.myapplication"
-        minSdk = 33
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
+//    defaultConfig {
+//        applicationId = "com.dota2.myapplication"
+//        minSdk = 33
+//        targetSdk = 33
+//        versionCode = 1
+//        versionName = "1.0"
+//
+//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//    }
 
     buildTypes {
         release {

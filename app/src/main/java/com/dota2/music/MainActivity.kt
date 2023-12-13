@@ -2,6 +2,10 @@ package com.dota2.music
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.dota2.music.databinding.ActivityMainBinding
 import com.dota2.music.base.BaseActivity
 import com.dota2.music.viewmodel.MainActivityViewModel
@@ -20,6 +24,22 @@ class MainActivity : BaseActivity() {
 
         mSharedViewModel?.toOpenOrCloseDrawer?.observe(this) {
             mMainActivityViewModel?.openDrawer?.value = it
+        }
+
+        initNavigation()
+    }
+
+    private fun initNavigation() {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_home1)
+
+        val navController = navHostFragment?.findNavController()
+        navController?.let {
+            mActivityMainBinding?.navBottom?.let { navView ->
+                NavigationUI.setupWithNavController(
+                    navView,
+                    it
+                )
+            }
         }
     }
 

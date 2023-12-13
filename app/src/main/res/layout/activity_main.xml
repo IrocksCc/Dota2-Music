@@ -20,6 +20,7 @@
             android:id="@+id/drawer"
             allowDrawerOpen="@{vm.allowDrawerOpen}"
             isOpenDrawer="@{vm.openDrawer}"
+            android:layout_gravity="left"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -50,7 +51,26 @@
                     android:name="androidx.navigation.fragment.NavHostFragment"
                     app:defaultNavHost="true"
                     app:navGraph="@navigation/nav_player"/>
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/nav_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:labelVisibilityMode="labeled"
+                    app:menu="@menu/nav_bottom_menu" />
             </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_drawer"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:fitsSystemWindows="true"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_drawer" />
+
         </androidx.drawerlayout.widget.DrawerLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

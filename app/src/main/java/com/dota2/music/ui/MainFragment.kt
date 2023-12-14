@@ -102,7 +102,7 @@ class MainFragment : BaseFragment(), BGABanner.Delegate<AppCompatImageView?, Str
 
         fun clickBanner() {}
     }
-1
+
     override fun onBannerItemClick(
         banner: BGABanner?,
         itemView: AppCompatImageView?,

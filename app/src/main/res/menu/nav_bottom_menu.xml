@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/mainFragment"
-        android:icon="@drawable/splash_player"
-        android:visible="true"
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/app_icon"
         android:title="首页"/>
 
     <item
-        android:icon="@drawable/splash_player"
+        android:id="@+id/musicStoreFragment"
+        android:icon="@drawable/app_icon"
         android:title="乐库"/>
 </menu>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.dota2.music.viewmodel.MainActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HomeFragment">
+
+        <!-- 左右滑动布局 -->
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawer"
+            allowDrawerOpen="@{vm.allowDrawerOpen}"
+            isOpenDrawer="@{vm.openDrawer}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- 上下滑动布局 -->
+            <com.sothree.slidinguppanel.SlidingUpPanelLayout
+                android:id="@+id/sliding"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                sothree:umanoDragView="@+id/slide_fragment_host"
+                sothree:umanoOverlay="false"
+                sothree:umanoPanelHeight="@dimen/sliding_up_header"
+                sothree:umanoShadowHeight="5dp">
+                <!-- 主页的navigation -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_main" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_player"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_player" />
+
+            </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_drawer"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:fitsSystemWindows="true"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_drawer" />
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

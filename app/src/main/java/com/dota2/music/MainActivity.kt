@@ -1,14 +1,15 @@
 package com.dota2.music
 
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
 import com.dota2.music.databinding.ActivityMainBinding
 import com.dota2.music.base.BaseActivity
 import com.dota2.music.viewmodel.MainActivityViewModel
+import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
 
 class MainActivity : BaseActivity() {
 
@@ -30,9 +31,8 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initNavigation() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_home1)
-
-        val navController = navHostFragment?.findNavController()
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_home) as NavHostFragment?
+        val navController = navHostFragment?.navController
         navController?.let {
             mActivityMainBinding?.navBottom?.let { navView ->
                 NavigationUI.setupWithNavController(

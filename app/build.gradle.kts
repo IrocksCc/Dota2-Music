@@ -46,7 +46,7 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:${appCompat}")
-    implementation("com.google.android.material:material:1.8.0")
+    implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.mikepenz:iconics-core:${latestAndroidIconicsRelease}")
     implementation("com.mikepenz:iconics-views:${latestAndroidIconicsRelease}")
@@ -55,8 +55,9 @@ dependencies {
     implementation("com.github.lygttpod:SuperTextView:${superTextViewVersionCode}")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
     implementation("io.reactivex.rxjava3:rxjava:3.1.5")
+
     val lifecycle_version = "2.5.1"
-    val nav_version = "2.5.3"
+    val nav_version = "2.3.0"
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")

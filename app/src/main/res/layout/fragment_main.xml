@@ -4,7 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="vm"
+            type="com.dota2.music.viewmodel.MainFragmentViewModel" />
+        <variable
+            name="click"
+            type="com.dota2.music.ui.MainFragment.ClickProxy" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

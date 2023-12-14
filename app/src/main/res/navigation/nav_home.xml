@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.dota2.music.HomeFragment"
+        android:name="com.dota2.music.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/musicStoreFragment"
-        android:name="com.dota2.music.MusicStoreFragment"
+        android:name="com.dota2.music.ui.MusicStoreFragment"
         android:label="fragment_music_store"
         tools:layout="@layout/fragment_music_store" >
         <action

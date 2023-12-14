@@ -1,10 +1,17 @@
-package com.dota2.music
+package com.dota2.music.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import com.dota2.music.R
+import com.dota2.music.base.BaseFragment
+import com.dota2.music.databinding.FragmentHomeBinding
+import com.dota2.music.databinding.FragmentMainBinding
+import com.dota2.music.viewmodel.HomeFragmentViewModel
+import com.dota2.music.viewmodel.MainFragmentViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -13,13 +20,16 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MusicStoreFragment.newInstance] factory method to
+ * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MusicStoreFragment : Fragment() {
+class HomeFragment : BaseFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private var mFragmentHomeDataBinding: FragmentHomeBinding? = null
+    private var mHomeFragmentViewModel: HomeFragmentViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +44,21 @@ class MusicStoreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_music_store, container, false)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        mFragmentHomeDataBinding = DataBindingUtil.bind<FragmentHomeBinding?>(view)
+        mHomeFragmentViewModel = getFragmentViewModel(this, HomeFragmentViewModel::class.java)
+        mFragmentHomeDataBinding?.lifecycleOwner = this
+        mFragmentHomeDataBinding?.vm = mHomeFragmentViewModel
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mSharedViewModel?.toOpenOrCloseDrawer?.observe(this) {
+            mHomeFragmentViewModel?.openDrawer?.value = it
+        }
     }
 
     companion object {
@@ -44,12 +68,12 @@ class MusicStoreFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment MusicStoreFragment.
+         * @return A new instance of fragment HomeFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            MusicStoreFragment().apply {
+            HomeFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -82,7 +82,9 @@ dependencies {
     // Gson
     implementation("com.google.code.gson:gson:2.8.6")
     implementation(project(":tools"))
+    implementation(project(":player"))
     implementation("com.github.bingoogolapple:BGABanner-Android:3.0.1")
+    implementation("com.facebook.fresco:fresco:3.1.3")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

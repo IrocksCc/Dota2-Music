@@ -39,13 +39,14 @@
                     android:layout_marginTop="20dp"
                     android:elevation="6dp">
 
-                    <androidx.appcompat.widget.AppCompatImageView
+                    <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/image_menu"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_marginStart="10dp"
                         android:scaleType="centerInside"
-                        android:src="@drawable/menu"
+                        app:placeholderImage="@drawable/menu"
+                        app:placeholderImageScaleType="centerCrop"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -95,6 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
+                        android:layout_marginStart="10dp"
                         android:text="推荐歌曲"
                         android:textColor="@color/black"
                         android:textSize="24sp"
@@ -110,7 +112,7 @@
                         app:banner_pointAutoPlayAble="true"
                         app:banner_pointAutoPlayInterval="3000"
                         app:banner_pointContainerBackground="@android:color/transparent"
-                        app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+                        app:banner_pointDrawable="@drawable/bga_banner_selector_point_solid"
                         app:banner_pointTopBottomMargin="40dp"
                         app:layout_scrollFlags="scroll"
                         app:layout_constraintStart_toStartOf="parent"

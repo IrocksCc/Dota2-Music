@@ -10,6 +10,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.dota2.music.databinding.ActivitySplashBinding
+import com.dota2.music.tools.constans.TypeFaceConstans
+import com.dota2.music.tools.util.TypeFaceUtils
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.Disposable
 import java.util.concurrent.TimeUnit
@@ -76,8 +78,9 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun initTypeFace() {
-        val puHuiTiFont = Typeface.createFromAsset(assets, PUHUITIF_FONT)
-        val shuHeiFont = Typeface.createFromAsset(assets, SHUHEI_FONT)
+        // TODO 设置字体 将来抽到TypeFaceUtils
+        val puHuiTiFont = TypeFaceUtils.getTypeFace(this, TypeFaceConstans.PUHUITIF_FONT)
+        val shuHeiFont = TypeFaceUtils.getTypeFace(this, TypeFaceConstans.SHUHEI_FONT)
         mActivitySplashBinding?.splashTitle?.typeface = puHuiTiFont
         mActivitySplashBinding?.splashSummary?.typeface = shuHeiFont
     }
@@ -89,8 +92,6 @@ class SplashActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val PUHUITIF_FONT = "fonts/Alibaba-PuHuiTi-Heavy.ttf"
-        private const val SHUHEI_FONT = "fonts/AlimamaShuHeiTi-Bold.ttf"
         private const val ANIMATION_DURATION = 1000L
     }
 }

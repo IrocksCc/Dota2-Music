@@ -2,6 +2,7 @@ package com.dota2.music.ui
 
 import android.media.Image
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.marginStart
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.NavHostFragment
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.bumptech.glide.Glide
 import com.dota2.music.R
@@ -78,12 +80,15 @@ class MainFragment : BaseFragment(), BGABanner.Delegate<ImageView?, String>, BGA
         mFragmentMainDataBinding?.suggestSongs?.typeface = TypeFaceUtils.getTypeFace(this.context, TypeFaceConstans.SHUHEI_FONT)
 
         //初始化适配器
-        mSongsItemAdapter = object : SongsItemAdapter<DefaultAlbum.DefaultMusic?, SuggestSongsItemBinding>(this.context, R.layout.fragment_main) {
+        mSongsItemAdapter = object : SongsItemAdapter<DefaultAlbum.DefaultMusic?, SuggestSongsItemBinding>(this.context, R.layout.suggest_songs_item) {
             override fun onBindItem(
                 binding: SuggestSongsItemBinding?,
                 item: DefaultAlbum.DefaultMusic?,
                 holder: BaseViewHolder
             ) {
+
+
+
                 // 设置歌名
                 binding?.suggestSongsName?.text = item?.title
                 // 设置歌手名字
@@ -97,13 +102,18 @@ class MainFragment : BaseFragment(), BGABanner.Delegate<ImageView?, String>, BGA
             }
 
         }
+        mFragmentMainDataBinding?.mainRecy?.adapter = mSongsItemAdapter
 
-        // 请求recyclerView数据
+        Log.e("LDX", "mMusicRequestViewModel onViewCreate");
+
+        // 数据获取到之后填给list
         mMusicRequestViewModel?.musicData?.observe(this) {
+            Log.e("LDX", "mMusicRequestViewModel title: ${it?.musics?.get(0)}");
             mSongsItemAdapter?.mList = it?.musics
         }
 
-        // 数据获取到之后填给list
+        // 请求recyclerView数据
+        mMusicRequestViewModel?.requstMusicData()
     }
 
     private fun initBanner() {
@@ -131,11 +141,11 @@ class MainFragment : BaseFragment(), BGABanner.Delegate<ImageView?, String>, BGA
     }
 
     inner class ClickProxy {
-        fun openMenu() {}
-
-        fun search() {
-
+        fun openMenu() {
+            mSharedViewModel?.toOpenOrCloseDrawer?.value = true
         }
+
+        fun search() = NavHostFragment.findNavController(this@MainFragment).navigate(R.id.action_mainFragment_to_searchFragment)
 
         fun clickBanner() {}
     }

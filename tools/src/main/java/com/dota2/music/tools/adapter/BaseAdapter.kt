@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-open abstract class BaseAdapter<T, B: ViewDataBinding>(val mContext: Context?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+abstract class BaseAdapter<T, B: ViewDataBinding>(val mContext: Context?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var mList: List<T>? = ArrayList()
 
@@ -20,18 +20,18 @@ open abstract class BaseAdapter<T, B: ViewDataBinding>(val mContext: Context?): 
     }
 
     override fun getItemCount(): Int {
-        return mList.size
+        return mList!!.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = DataBindingUtil.getBinding<B>(holder.itemView)
         binding?.let {
-            onBindItem(binding, mList.get(position), holder as BaseViewHolder)
+            onBindItem(binding, mList?.get(position), holder as BaseViewHolder)
             it.executePendingBindings()
         }
     }
 
-    abstract fun onBindItem(binding: B?, item: T, holder: BaseViewHolder)
+    abstract fun onBindItem(binding: B?, item: T?, holder: BaseViewHolder)
 
     abstract fun getLayoutId(): Int
 

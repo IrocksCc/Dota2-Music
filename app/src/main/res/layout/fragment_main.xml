@@ -37,6 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:onClick="@{()->click.search()}"
                     android:elevation="6dp">
 
                     <com.facebook.drawee.view.SimpleDraweeView
@@ -45,6 +46,7 @@
                         android:layout_height="35dp"
                         android:layout_marginStart="10dp"
                         android:scaleType="centerInside"
+                        android:onClick="@{()->click.openMenu()}"
                         app:placeholderImage="@drawable/menu"
                         app:placeholderImageScaleType="centerCrop"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,6 +71,7 @@
                             android:layout_marginStart="10dp"
                             android:scaleType="centerInside"
                             android:src="@drawable/search"
+                            android:onClick="@{()->click.search()}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

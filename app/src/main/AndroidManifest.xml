@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Dota2Music"
+        android:name=".MyApplication"
         tools:replace="android:icon">
         <activity
             android:name=".SplashActivity"

@@ -1,0 +1,18 @@
+{
+  "albumId": "001",
+  "title": "海阔天空",
+  "summary": "BenSound",
+  "artist": {
+    "name": "Derry最佩服最喜欢的大爱无边的励志向上音乐"
+  },
+  "coverImg": "https://upload-images.jianshu.io/upload_images/27389471-a1707fe9d2881bad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+  "musics": [{
+    "musicId": "001",
+    "title": "真的爱你",
+    "artist": {
+      "name": "Derry最佩服最喜欢的大爱无边的励志向上音乐"
+    },
+    "coverImg": "https://upload-images.jianshu.io/upload_images/27389471-f14157a593105b44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+    "url": "bensound-sunny.mp3"
+  }]
+}

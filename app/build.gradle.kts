@@ -40,6 +40,7 @@ android {
 
 dependencies {
 
+    implementation(project(mapOf("path" to ":player")))
     val appCompat = "1.6.1"
     val latestAndroidIconicsRelease = "5.4.0"
     val superTextViewVersionCode = "2.4.6"

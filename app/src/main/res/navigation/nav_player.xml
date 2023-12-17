@@ -9,5 +9,14 @@
         android:id="@+id/playerFragment"
         android:name="com.dota2.music.ui.PlayerFragment"
         android:label="fragment_player"
-        tools:layout="@layout/fragment_player" />
+        tools:layout="@layout/fragment_player" >
+        <action
+            android:id="@+id/action_playerFragment_to_playerScreenFragment"
+            app:destination="@id/playerScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerScreenFragment"
+        android:name="com.dota2.music.PlayerScreenFragment"
+        android:label="fragment_player_screen"
+        tools:layout="@layout/fragment_player_screen" />
 </navigation>

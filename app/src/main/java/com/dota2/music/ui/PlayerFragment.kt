@@ -5,29 +5,38 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.NavHostFragment
 import com.dota2.music.R
+import com.dota2.music.base.BaseFragment
+import com.dota2.music.databinding.FragmentMainBinding
+import com.dota2.music.databinding.FragmentPlayerBinding
+import com.dota2.music.viewmodel.MainFragmentViewModel
+import com.dota2.music.viewmodel.PlayerFragmentViewModel
+import com.dota2.player.DefaultPlayerManager
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class PlayerFragment : BaseFragment() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PlayerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class PlayerFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var mFragmentPlayerBinding: FragmentPlayerBinding? = null
+    private var mPlayerFragmentViewModel: PlayerFragmentViewModel? = null
+//    private val mMusic:
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        initView()
+    }
+
+    private fun initView() {
+        // 首次进入设置为当前播放的歌曲
+        setMusicInfo()
+    }
+
+    private fun setMusicInfo() {
+        val currentPlayingMusic = DefaultPlayerManager.instance.getCurrentPlayingMusic()
+        mPlayerFragmentViewModel?.songImage?.value = currentPlayingMusic?.coverImg
+        mPlayerFragmentViewModel?.songTitle?.value = currentPlayingMusic?.title
+        mPlayerFragmentViewModel?.songArtist?.value = currentPlayingMusic?.artist?.name
     }
 
     override fun onCreateView(
@@ -35,26 +44,40 @@ class PlayerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_player, container, false)
+        val view = inflater.inflate(R.layout.fragment_player, container, false)
+        mFragmentPlayerBinding = DataBindingUtil.bind<FragmentPlayerBinding?>(view)
+        mPlayerFragmentViewModel = getFragmentViewModel(this, PlayerFragmentViewModel::class.java)
+        mFragmentPlayerBinding?.vm = mPlayerFragmentViewModel
+        mFragmentPlayerBinding?.click = ClickProxy()
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PlayerFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PlayerFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // 监听音乐变化，实时更新图片
+        DefaultPlayerManager.instance.uiStates.observe(viewLifecycleOwner) {
+            mPlayerFragmentViewModel?.songImage?.value = it?.img
+            mPlayerFragmentViewModel?.songTitle?.value = it?.title
+            mPlayerFragmentViewModel?.songArtist?.value = it?.artist?.name
+        }
+    }
+
+    inner class ClickProxy {
+        fun openPlayerScreen() {
+            // 必须打开一个新的fragment
+            // 不能使用navigaiton跳转=
+            NavHostFragment.findNavController(this@PlayerFragment).navigate(R.id.action_playerFragment_to_playerScreenFragment)
+        }
+
+
+        fun pause() {
+
+        }
+
+        fun next() {
+
+        }
     }
 }

@@ -50,6 +50,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
                     android:minHeight="4dp"
+                    android:max="@{vm.maxSeekbar}"
+                    android:progress="@{vm.currentSeekbar}"
                     android:progressDrawable="@drawable/progressbar_color"
                     android:progressTint="@android:color/transparent" />
 
@@ -78,6 +80,7 @@
                 android:layout_marginEnd="30dp"
                 android:src="@drawable/splash_player"
                 android:scaleType="centerCrop"
+                android:onClick="@{()->click.playNext()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -90,6 +93,7 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
                 android:src="@drawable/splash_player"
+                android:onClick="@{()->click.togglePlay()}"
                 app:layout_constraintEnd_toStartOf="@id/next_song"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.dota2.music.tools.peek.UnPeekLiveData
 import com.dota2.player.domain.PlayingInfoManager
 
-class PlayerFragmentViewModel: ViewModel() {
+class PlayerScreenFragmentViewModel: ViewModel() {
     val songImage: UnPeekLiveData<String> by lazy { UnPeekLiveData() }
 
     val songTitle: UnPeekLiveData<String> by lazy { UnPeekLiveData() }
@@ -17,4 +17,6 @@ class PlayerFragmentViewModel: ViewModel() {
     val maxSeekbar: ObservableField<Int> by lazy { ObservableField() }
 
     val repeatMode: ObservableField<Enum<PlayingInfoManager.RepeatMode>> by lazy { ObservableField() }
+
+    val openSongsMenu: UnPeekLiveData<Boolean> by lazy { UnPeekLiveData() }
 }

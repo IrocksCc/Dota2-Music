@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/playerScreenFragment"
-        android:name="com.dota2.music.PlayerScreenFragment"
+        android:name="com.dota2.music.ui.PlayerScreenFragment"
         android:label="fragment_player_screen"
         tools:layout="@layout/fragment_player_screen" />
 </navigation>

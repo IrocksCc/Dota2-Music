@@ -1,7 +1,6 @@
 package com.dota2.music.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import com.dota2.music.R
 import com.dota2.music.base.BaseFragment
-import com.dota2.music.databinding.FragmentMainBinding
 import com.dota2.music.databinding.FragmentPlayerBinding
-import com.dota2.music.viewmodel.MainFragmentViewModel
 import com.dota2.music.viewmodel.PlayerFragmentViewModel
 import com.dota2.player.DefaultPlayerManager
 
@@ -56,11 +53,18 @@ class PlayerFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 监听音乐变化，实时更新图片
         DefaultPlayerManager.instance.uiStates.observe(viewLifecycleOwner) {
+            // 监听音乐变化，实时更新图片
             mPlayerFragmentViewModel?.songImage?.value = it?.img
             mPlayerFragmentViewModel?.songTitle?.value = it?.title
             mPlayerFragmentViewModel?.songArtist?.value = it?.artist?.name
+
+            // 更新进度条
+            mPlayerFragmentViewModel?.maxSeekbar?.set(it?.duration)
+            mPlayerFragmentViewModel?.currentSeekbar?.set(it?.progress)
+
+            // 更新播放模式，在播放主界面做
+//            mPlayerFragmentViewModel?.repeatMode?.set(it?.repeatMode)
         }
     }
 
@@ -71,13 +75,8 @@ class PlayerFragment : BaseFragment() {
             NavHostFragment.findNavController(this@PlayerFragment).navigate(R.id.action_playerFragment_to_playerScreenFragment)
         }
 
+        fun togglePlay() = DefaultPlayerManager.instance.togglePlay()
 
-        fun pause() {
-
-        }
-
-        fun next() {
-
-        }
+        fun playNext() = DefaultPlayerManager.instance.playNext()
     }
 }

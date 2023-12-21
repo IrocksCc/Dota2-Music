@@ -10,4 +10,7 @@
     <color name="splash_divide">#333333</color>
     <color name="player_background_color">#FEFEFE</color>
     <color name="colorTextForeground">#050505</color>
+    <color name="dota2_color_player_cover_image_view">#40FFFFFF</color>
+    <color name="dota2_color_song_cover">#F3F3F3</color>
+    <color name="colorAccent">#03DAC5</color>
 </resources>

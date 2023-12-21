@@ -1,11 +1,13 @@
 package com.dota2.music.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
+import com.dota2.music.PlayerScreenActivity
 import com.dota2.music.R
 import com.dota2.music.base.BaseFragment
 import com.dota2.music.databinding.FragmentPlayerBinding
@@ -72,7 +74,20 @@ class PlayerFragment : BaseFragment() {
         fun openPlayerScreen() {
             // 必须打开一个新的fragment
             // 不能使用navigaiton跳转=
-            NavHostFragment.findNavController(this@PlayerFragment).navigate(R.id.action_playerFragment_to_playerScreenFragment)
+//            NavHostFragment.findNavController(this@PlayerFragment).navigate(R.id.action_playerFragment_to_playerScreenFragment)
+//            activity?.let {
+//                it.supportFragmentManager
+//            }?.let {
+//                it.beginTransaction()
+//            }?.let {
+//                it.replace(R.id.fragment_container, PlayerScreenFragment(), null)
+//            }?.let {
+//                it.addToBackStack(null)
+//            }?.let {
+//                it.commit()
+//            }
+
+            startActivity(Intent(activity, PlayerScreenActivity::class.java))
         }
 
         fun togglePlay() = DefaultPlayerManager.instance.togglePlay()

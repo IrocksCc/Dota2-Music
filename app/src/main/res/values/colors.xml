@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="splash_divide">#333333</color>
     <color name="player_background_color">#FEFEFE</color>
+    <color name="colorTextForeground">#050505</color>
 </resources>

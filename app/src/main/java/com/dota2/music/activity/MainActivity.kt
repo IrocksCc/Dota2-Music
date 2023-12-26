@@ -1,9 +1,10 @@
-package com.dota2.music
+package com.dota2.music.activity
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.dota2.music.R
 import com.dota2.music.databinding.ActivityMainBinding
 import com.dota2.music.base.BaseActivity
 import com.dota2.music.viewmodel.HomeFragmentViewModel
@@ -16,7 +17,9 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mActivityMainBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        mActivityMainBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this,
+            R.layout.activity_main
+        )
         mMainActivityViewModel = getActivityViewModel(this, HomeFragmentViewModel::class.java)
         mActivityMainBinding?.lifecycleOwner = this
         mActivityMainBinding?.vm = mMainActivityViewModel

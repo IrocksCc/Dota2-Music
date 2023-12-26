@@ -14,10 +14,10 @@
         android:theme="@style/Theme.Dota2Music"
         tools:replace="android:icon">
         <activity
-            android:name=".PlayerScreenActivity"
+            android:name=".activity.PlayerScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="false" />
     </application>
 

@@ -1,14 +1,14 @@
-package com.dota2.music
+package com.dota2.music.activity
 
 import android.animation.Animator
 import android.animation.Animator.AnimatorListener
 import android.animation.ObjectAnimator
 import android.content.Intent
-import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import com.dota2.music.R
 import com.dota2.music.databinding.ActivitySplashBinding
 import com.dota2.music.tools.constans.TypeFaceConstans
 import com.dota2.music.tools.util.TypeFaceUtils
@@ -22,7 +22,9 @@ class SplashActivity : AppCompatActivity() {
     private var mActivitySplashBinding: ActivitySplashBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mActivitySplashBinding = DataBindingUtil.setContentView<ActivitySplashBinding?>(this, R.layout.activity_splash)
+        mActivitySplashBinding = DataBindingUtil.setContentView<ActivitySplashBinding?>(this,
+            R.layout.activity_splash
+        )
 
         init()
         startAnimation()

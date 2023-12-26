@@ -6,11 +6,11 @@
     <data>
         <variable
             name="vm"
-            type="com.dota2.music.viewmodel.PlayerScreenFragmentViewModel" />
+            type="com.dota2.music.viewmodel.PlayerScreenActivityViewModel" />
 
         <variable
             name="click"
-            type="com.dota2.music.ui.PlayerScreenFragment.ClickProxy" />
+            type="com.dota2.music.activity.PlayerScreenActivity.ClickProxy" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +24,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="15dp"
             android:src="@drawable/app_icon"
+            android:onClick="@{()->click.clickBack()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -91,6 +92,7 @@
                 android:layout_marginStart="15dp"
                 android:contentDescription="下载"
                 android:src="@drawable/app_icon"
+                android:onClick="@{()->click.download()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -102,6 +104,7 @@
                 android:padding="16dp"
                 android:contentDescription="收藏"
                 android:src="@drawable/app_icon"
+                android:onClick="@{()->click.store()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -115,6 +118,7 @@
                 android:layout_marginEnd="15dp"
                 android:contentDescription="详细信息"
                 android:src="@drawable/app_icon"
+                android:onClick="@{()->click.detail()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -171,6 +175,7 @@
                 android:layout_marginStart="15dp"
                 android:contentDescription="播放模式"
                 android:src="@drawable/app_icon"
+                android:onClick="@{()->click.changeRepeatMode()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -180,6 +185,7 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:src="@drawable/app_icon"
+                android:onClick="@{()->click.togglePlay()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -193,6 +199,7 @@
                 android:contentDescription="上一首"
                 android:padding="16dp"
                 android:src="@drawable/app_icon"
+                android:onClick="@{()->click.playPrevious()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/player_screen_play"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -205,6 +212,7 @@
                 android:contentDescription="上一首"
                 android:padding="16dp"
                 android:src="@drawable/app_icon"
+                android:onClick="@{()->click.playNext()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/player_screen_play"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -217,6 +225,7 @@
                 android:contentDescription="播放列表"
                 android:padding="16dp"
                 android:src="@drawable/app_icon"
+                android:onClick="@{()->click.openSongsMenu()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

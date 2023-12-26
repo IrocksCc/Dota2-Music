@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.NavHostFragment
-import com.dota2.music.PlayerScreenActivity
+import com.dota2.music.activity.PlayerScreenActivity
 import com.dota2.music.R
 import com.dota2.music.base.BaseFragment
 import com.dota2.music.databinding.FragmentPlayerBinding

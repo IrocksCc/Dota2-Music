@@ -26,6 +26,7 @@ class PlayerScreenActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
 
+        // 按下back按钮退出播放界面
         mPlayerScreenActivityViewModel?.exitPlayerScreen?.observe(this) {
             if (it) {
                 finish()
@@ -35,7 +36,8 @@ class PlayerScreenActivity : BaseActivity() {
                 )
             }
         }
-        // 按下back按钮退出播放界面
+
+        // 点击封面切换到歌词
     }
 
 
@@ -70,6 +72,11 @@ class PlayerScreenActivity : BaseActivity() {
         }
 
         fun detail() {
+
+        }
+
+        // 点击封面
+        fun clickCoverImage() {
 
         }
     }

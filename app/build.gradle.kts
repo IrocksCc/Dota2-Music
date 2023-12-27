@@ -87,6 +87,9 @@ dependencies {
     implementation("com.github.bingoogolapple:BGABanner-Android:3.0.1")
     implementation("com.facebook.fresco:fresco:3.1.3")
 
+    // 歌词
+    implementation("com.github.Moriafly:LyricViewX:1.2.1")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

@@ -1,34 +1,30 @@
 package com.dota2.music.ui
 
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.view.marginStart
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import cn.bingoogolapple.bgabanner.BGABanner
-import com.bumptech.glide.Glide
 import com.dota2.music.R
 import com.dota2.music.base.BaseFragment
 import com.dota2.music.bean.BannerBean
 import com.dota2.music.databinding.FragmentMainBinding
 import com.dota2.music.databinding.SuggestSongsItemBinding
+import com.dota2.music.tools.adapter.BaseAdapter
 import com.dota2.music.tools.adapter.SongsItemAdapter
 import com.dota2.music.tools.constans.TypeFaceConstans
 import com.dota2.music.tools.util.TypeFaceUtils
 import com.dota2.music.viewmodel.MainFragmentViewModel
 import com.dota2.music.viewmodel.MusicRequestViewModel
+import com.dota2.player.DefaultPlayerManager
 import com.dota2.player.bean.DefaultAlbum
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.generic.RoundingParams
 import com.facebook.drawee.view.SimpleDraweeView
-import com.sothree.slidinguppanel.SlidingUpPanelLayout
 
 class MainFragment : BaseFragment(), BGABanner.Delegate<ImageView?, String>, BGABanner.Adapter<ImageView?, String?>{
 
@@ -103,6 +99,12 @@ class MainFragment : BaseFragment(), BGABanner.Delegate<ImageView?, String>, BGA
 
         }
         mFragmentMainDataBinding?.mainRecy?.adapter = mSongsItemAdapter
+        mSongsItemAdapter?.setOnItemClickListener(object : BaseAdapter.OnItemClickListener<DefaultAlbum.DefaultMusic?> {
+            override fun onItemClick(item: View, position: Int) {
+                Log.e("LDX", "mSongsItemAdapter onItemClick ${position}");
+                DefaultPlayerManager.instance.playAudio(position)
+            }
+        })
 
         Log.e("LDX", "mMusicRequestViewModel onViewCreate");
 

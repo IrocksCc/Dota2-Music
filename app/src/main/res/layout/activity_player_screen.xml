@@ -66,12 +66,20 @@
             app:layout_constraintTop_toBottomOf="@id/player_screen_song_name"/>
 
         <!-- TODO 歌词界面-->
+        <com.dirror.lyricviewx.LyricViewX
+            android:id="@+id/lyric"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lrcPadding="31dp">
+
+        </com.dirror.lyricviewx.LyricViewX>
 
         <include
             android:id="@+id/includePlayerCover"
             layout="@layout/player_cover_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{()->click.clickCoverImage()}"
             app:layout_constraintBottom_toTopOf="@+id/player_screen_menu"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"

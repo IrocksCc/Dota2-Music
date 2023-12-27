@@ -37,6 +37,15 @@ class DefaultPlayerManager private constructor() :
         mController = PlayerController<DefaultAlbum?, DefaultAlbum.DefaultMusic?, DefaultAlbum.DefaultArtist?>()
     }
 
+    private var mIsInit: Boolean = false
+
+    fun init(context: Context?) {
+        if (!mIsInit) {
+            init(context, null, null)
+            mIsInit = true
+        }
+    }
+
     override fun init(context: Context?, iServiceNotifier: IServiceNotifier?, iCacheProxy: ICacheProxy?) {
         mController.init(context?.applicationContext, iServiceNotifier, iCacheProxy)
     }

@@ -21,4 +21,6 @@ class PlayerScreenActivityViewModel: ViewModel() {
     val openSongsMenu: UnPeekLiveData<Boolean> by lazy { UnPeekLiveData() }
 
     val exitPlayerScreen: UnPeekLiveData<Boolean> by lazy { UnPeekLiveData() }
+
+    val switchToLyric: UnPeekLiveData<Boolean> by lazy { UnPeekLiveData() }
 }

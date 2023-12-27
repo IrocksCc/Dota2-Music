@@ -4,16 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseAdapter<T, B: ViewDataBinding>(val mContext: Context?,
-                                                  diffCallback: DiffUtil.ItemCallback<T>
-): ListAdapter<T, RecyclerView.ViewHolder>(diffCallback) {
+abstract class BaseAdapter<T, B: ViewDataBinding>(val mContext: Context?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var mList: List<T>? = ArrayList()
     protected var mOnItemClickListener: OnItemClickListener<T>? = null
@@ -25,7 +20,7 @@ abstract class BaseAdapter<T, B: ViewDataBinding>(val mContext: Context?,
         val baseViewHolder = BaseViewHolder(inflate.root)
         baseViewHolder.itemView.setOnClickListener {
             val position = baseViewHolder.adapterPosition
-            mOnItemClickListener?.onItemClick(baseViewHolder.itemView.id, getItem(position), position)
+            mOnItemClickListener?.onItemClick(it, position)
         }
 
         return baseViewHolder
@@ -43,7 +38,7 @@ abstract class BaseAdapter<T, B: ViewDataBinding>(val mContext: Context?,
         }
     }
 
-    open fun setOnItemClickListener(onItemClickListener: OnItemClickListener<T>) {
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener<T>) {
         mOnItemClickListener = onItemClickListener
     }
 
@@ -53,7 +48,7 @@ abstract class BaseAdapter<T, B: ViewDataBinding>(val mContext: Context?,
 
     class BaseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
-    interface OnItemClickListener<M> {
-        fun onItemClick(viewId: Int, item: M, position: Int)
+    interface OnItemClickListener<T> {
+        fun onItemClick(item: View, position: Int)
     }
 }
